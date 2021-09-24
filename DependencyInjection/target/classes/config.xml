@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+<!--    <bean name="order1" class="org.kamal.Order">-->
+<!--        <property name="orderId" value="1"/>-->
+<!--        <property name="Customer">-->
+<!--            <ref bean="A1"></ref>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <bean name="book" class="org.kamal.Book" autowire="byName">
+        <property name="bookId" value="1"></property>
+        <property name="bookName" value="The BFG"></property>
+        <property name="publisher" value="Penguin Books"/>
+    </bean>
+
+    <bean name="book1" class="org.kamal.Book">
+        <property name="bookId" value="2"></property>
+        <property name="bookName" value="Happy Potter"></property>
+        <property name="publisher" value="Bloomsburg Publishing"/>
+        <property name="author" >
+            <ref bean="A1"/>
+        </property>
+    </bean>
+
+    <bean name="order" class="org.kamal.Order" autowire="byType">
+        <property name="orderId" value="1"></property>
+    </bean>
+
+    <bean name="author" class="org.kamal.Author" p:authorId="1" p:authorName="Roald Dhal"/>
+    <bean name="A1" class="org.kamal.Author" p:authorId="2" p:authorName="J K Rowling"/>
+
+    <bean name="customer" class="org.kamal.Customer" autowire="byType">
+        <constructor-arg value="C1" />
+        <constructor-arg value="1" type="int"/>
+    </bean>
+
+</beans>
